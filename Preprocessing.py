@@ -34,7 +34,6 @@ combined_data = combine_data_by_date(data, path_of_combination)
 
 def generate_pred_data():
     pp = data['Product_Code'].value_counts().index
-    data_2012_1359 = combined_data[(combined_data['Product'] == pp[0]) & (combined_data['Year'] == 2012)]
-    half_6_month = data_2012_1359.loc[(data_2012_1359['Date'] >= dt.date(2012, 1,1)) & (data_2012_1359['Date'] < dt.date(2012, 6,30))][['Date', 'Demand_sum']]
-    target = data_2012_1359[data_2012_1359['Month'] == 7][['Date', 'Demand_sum']]
-    return half_6_month, target
+    data_2012_1359 = combined_data[combined_data['Product'] == pp[0]]
+
+    return data_2012_1359
